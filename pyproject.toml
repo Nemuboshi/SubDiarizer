@@ -1,0 +1,31 @@
+[project]
+name = "SubDiarizer"
+version = "0.1.0"
+description = "CLI tool for speaker diarization and speaker-tagged .ass subtitles, powered by pyannote.audio."
+readme = "README.md"
+requires-python = "==3.11.*"
+dependencies = [
+    "pyannote-audio>=4.0.4",
+    "pysubs2>=1.8.0",
+    "torch>=2.10.0",
+    "torchaudio>=2.10.0"
+]
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+torchvision = [
+  { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[dependency-groups]
+dev = [
+    "pyrefly>=0.53.0",
+    "ruff>=0.15.2",
+]
